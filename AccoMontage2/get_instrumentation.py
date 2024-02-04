@@ -9,7 +9,6 @@ called '076_melody.mid_output_results' with all the midi's.
 
 
 if __name__ == '__main__':
-    import sys
     
 
     
