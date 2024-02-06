@@ -9,3 +9,7 @@ Just download the ones that say "cannot find file path."
 
 
 2) In order to run the classifier in classify.py you'll need to create replicate credentials: replicate.com. You'll store them in a file here: AccoMontage2/replicate_credentials.json.
+
+
+
+TODO: overall flow 
