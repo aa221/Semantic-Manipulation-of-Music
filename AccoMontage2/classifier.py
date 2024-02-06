@@ -50,6 +50,7 @@ def file_to_data_uri(file_path):
 
     # Create the data URI
     data_uri = f'data:{mime_type};base64,{base64_string}'
+    file_path =  os.path.basename(file_path)
     return [data_uri,file_path]
 
 
@@ -96,7 +97,8 @@ def download_md_file(md_link, file_name, folder_path='mood_attributes'):
 
 
 
-# uri,file_name = file_to_data_uri('276e5c05-3a0c-4d9f-aed4-a125ab308a6f__output.wav')
+uri,file_name = file_to_data_uri('276e5c05-3a0c-4d9f-aed4-a125ab308a6f__output.wav')
+print(file_name)
 # link = run_classifier(uri)
 # print(link)
 # download_md_file(link,file_name)
