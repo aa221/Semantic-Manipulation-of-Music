@@ -8,11 +8,10 @@ called '076_melody.mid_output_results' with all the midi's.
 """
 
 
-if __name__ == '__main__':
-    
 
-    
-    input_melody_path = 'MIDI demos/inputs/076/melody.mid'
+
+
+def create_instrumentation(input_melody_path):
     parts = input_melody_path.split('/')
 
     # Combine the second-to-last and last parts with an underscore
@@ -26,3 +25,5 @@ if __name__ == '__main__':
     cdt.set_note_shift(0)
     cdt.set_output_style(cdt.Style.POP_STANDARD)
     cdt.generate_save(demo_name + '_output_results')
+
+    return 'AccoMontage2/'+demo_name + '_output_results'+'/chord_gen.mid'
