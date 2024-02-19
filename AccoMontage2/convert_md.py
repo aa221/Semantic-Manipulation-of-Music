@@ -5,7 +5,7 @@ import json
 ## If the process suceeds we delete the md file from the file path 
 
 
-def process_md(file_path):
+def process_md(file_path,file_name): ## file_name is associated to the number
     
     try: 
         with open(file_path, 'r') as file:
@@ -32,6 +32,7 @@ def process_md(file_path):
                     scores = [score.strip('*') for score in scores]
                     for mood, score in zip(moods, scores):
                         mood_dict['mood'][mood.strip()] = score.strip()
+                print(mood_dict)
 
             # delete the file path if our process works. 
             if os.path.exists(file_path):

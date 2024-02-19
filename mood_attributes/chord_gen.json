@@ -1,34 +1,34 @@
 [
     {
         "mood": {
-            "acoustic": "0.02",
-            "not acoustic": "0.96**",
-            "electronic": "0.02",
+            "acoustic": "0.04",
+            "not acoustic": "0.93**",
+            "electronic": "0.01",
             "not electronic": "0.99**",
-            "aggressive": "0.09",
+            "aggressive": "0.10",
             "not aggressive": "0.99**",
             "not relaxed": "0.00",
-            "relaxed": "0.98**",
-            "happy": "0.06",
-            "not happy": "0.97**",
-            "not sad": "0.01",
+            "relaxed": "0.99**",
+            "happy": "0.02",
+            "not happy": "0.99**",
+            "not sad": "0.00",
             "sad": "1.00**",
-            "not party": "**0.95",
-            "party": "0.06"
+            "not party": "**0.96",
+            "party": "0.05"
         }
     },
     {
         "genre": {
             " blues": " 0.04",
-            "classic": "0.82",
+            "classic": "0.73",
             "country": "0.02",
-            "disco": "0.04",
-            "hip hop": "0.07",
+            "disco": "0.05",
+            "hip hop": "0.17",
             "jazz": "0.07",
-            "metal": "0.03",
-            "pop": "0.01",
-            "reggae": "0.07",
-            "rock ": "0.06"
+            "metal": "0.05",
+            "pop": "0.02",
+            "reggae": "0.08",
+            "rock ": "0.10"
         }
     }
 ]

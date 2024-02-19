@@ -4,6 +4,7 @@ import replicate
 import pathlib
 import base64
 import requests
+import re 
 
 
 
@@ -12,6 +13,16 @@ auth_file_path = 'AccoMontage2/replicate_credentials.json'
 
 
 ## set the token as the key to use downstream. 
+
+def extract_exact_pattern(file_path):
+    # Regex pattern to find "_XXX_" where XXX are digits
+    pattern = r"_(\d+)_"
+    match = re.search(pattern, file_path)
+    if match:
+        # Returns the exact pattern "_XXX_"
+        return f"_{match.group(1)}_"
+    else:
+        return "Pattern not found"
 
 def credential_setup():
     try:
@@ -67,9 +78,10 @@ def run_classifier(uri):
 
 
 ## downloads the md and put it in the folder
-def download_md_file(md_link, file_name, folder_path='mood_attributes'):
+def download_md_file(md_link, file_name, path_name, folder_path='mood_attributes'):
     # Send a GET request to the provided Markdown link
     response = requests.get(md_link)
+    path_name = extract_exact_pattern(path_name)
 
     if response.status_code == 200:
         md_content = response.text
@@ -79,7 +91,7 @@ def download_md_file(md_link, file_name, folder_path='mood_attributes'):
             os.makedirs(folder_path)
 
         # Define the full MD file path
-        md_file_path = os.path.join(folder_path, file_name+'.md')
+        md_file_path = os.path.join(folder_path, path_name+'_'+file_name+'.md')
 
         # Save the MD content to the file
         with open(md_file_path, 'w') as md_file:
@@ -97,8 +109,8 @@ def download_md_file(md_link, file_name, folder_path='mood_attributes'):
 
 
 
-uri,file_name = file_to_data_uri('276e5c05-3a0c-4d9f-aed4-a125ab308a6f__output.wav')
-print(file_name)
+# uri,file_name = file_to_data_uri('276e5c05-3a0c-4d9f-aed4-a125ab308a6f__output.wav')
+# print(file_name)
 # link = run_classifier(uri)
 # print(link)
 # download_md_file(link,file_name)

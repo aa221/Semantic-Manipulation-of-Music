@@ -1,5 +1,15 @@
 import subprocess
 import os 
+import re
+
+def extract_pattern(file_path):
+    # Regex pattern to find "_XXX" where XXX are digits
+    pattern = r"_(\d+)_"
+    match = re.search(pattern, file_path)
+    if match:
+        return "_" + match.group(1)
+    else:
+        return "Pattern not found"
 
 def midi_to_wav(midi_file, sound_font):
     """
@@ -10,9 +20,14 @@ def midi_to_wav(midi_file, sound_font):
     - sound_font: Path to the SoundFont file (.sf2).
     - wav_file: Path to the output WAV file.
     """
+
+    cleaned_path = extract_pattern(midi_file)
+
+
+
     base_name = os.path.basename(midi_file)
     name_without_extension = os.path.splitext(base_name)[0]
-    wav_file = 'output_wavs'+'/'+name_without_extension+'.wav'
+    wav_file = 'output_wavs'+'/'+cleaned_path+'_'+name_without_extension+'.wav'
     print(wav_file)
     try:
         # Construct the FluidSynth command
@@ -35,4 +50,4 @@ def midi_to_wav(midi_file, sound_font):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred: {e.stderr.decode('utf-8')}")
 
-print(midi_to_wav("AccoMontage2/076_melody.mid_output_results/chord_gen.mid", "soundfonts/Mario_World_HDv1.1.sf2"))
+print(midi_to_wav("changed_midis_076_melody.mid_output_results/chord_gen.mid", "soundfonts/Mario_World_HDv1.1.sf2"))
