@@ -3,13 +3,15 @@ import os
 import re
 
 def extract_pattern(file_path):
-    # Regex pattern to find "_XXX" where XXX are digits
-    pattern = r"_(\d+)_"
+    # Regex pattern to find a number in the path
+    pattern = r"/(\d+)/|_(\d+)(?=_|\.)"
     match = re.search(pattern, file_path)
     if match:
-        return "_" + match.group(1)
+        return "_" + (match.group(1) or match.group(2))
     else:
         return "Pattern not found"
+
+
 
 def midi_to_wav(midi_file, sound_font):
     """
@@ -50,4 +52,4 @@ def midi_to_wav(midi_file, sound_font):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred: {e.stderr.decode('utf-8')}")
 
-print(midi_to_wav("changed_midis_076_melody.mid_output_results/chord_gen.mid", "soundfonts/Mario_World_HDv1.1.sf2"))
+#print(midi_to_wav("changed_midis_076_melody.mid_output_results/chord_gen.mid", "soundfonts/Mario_World_HDv1.1.sf2"))
