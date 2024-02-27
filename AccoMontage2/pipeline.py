@@ -12,19 +12,15 @@ There are three folders that save outputs
 
 """
 
-
 def upload_pipeline(midi_filepath_input,semitones=30): # the input here is the single stem midi , ## semitone value is a hyper-parameter for whether you want happy or sad.
     ## higher value for semitones mean we are making the song happier, 
     ## negative values mean we are making the song sadder. 
-    credential_setup()  
     ## select style (soundfont)
     ## TODO: create logic so that certain genres correlate to certain sounds. 
 
     ## first step is to  convert this into wav format:
 
     try:    
-        print('start')
-
         new_midi = transpose(midi_filepath_input,semitones)
         print(new_midi)
         generated_path = create_instrumentation(new_midi)
