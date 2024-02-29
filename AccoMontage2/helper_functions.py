@@ -7,7 +7,6 @@ def write_to_txt(wav_path,probabilities,output=True):
     folder_name = 'mood_attributes/'+wav_path+'/'+wav_path
     
 
-    print(folder_name)
     if output:
         folder_name= folder_name+'_after_changes'
     
@@ -21,7 +20,6 @@ def write_to_txt(wav_path,probabilities,output=True):
             probabilities_str = str(probabilities)
             file.write(f'Probabilities: {probabilities_str}\n')
 
-    print({'paths':[folder_name]})
     return 
 
 
@@ -40,4 +38,3 @@ def get_circle_path(original_path):
         return "Invalid path"
 
 
-print(get_circle_path('output_wavs/_105_melody.wav'))

@@ -17,17 +17,30 @@ There are three folders that save outputs
 
 
 
-def upload_pipeline(midi_filepath_input,semitones=15): # the input here is the single stem midi , ## semitone value is a hyper-parameter for whether you want happy or sad.
+def upload_pipeline(midi_filepath_input,semitones=-20): # the input here is the single stem midi , ## semitone value is a hyper-parameter for whether you want happy or sad.
     ## higher value for semitones mean we are making the song happier, 
     ## negative values mean we are making the song sadder. 
     ## select style (soundfont)
-    ## TODO: create logic so that certain genres correlate to certain sounds. 
-
     ## first step is to  convert this into wav format:
+    """
+    Takes in the filepath to a midi, and some semitone value. 
+    Pipeline is as follows: 
+        1) Converts the inputted Midi into a given emotion based on the semitones value. 
+        2) Adds instrumentation to it. 
+        3) Converts the MIDI prior to transformations and after into .wavs and saves it into output_wavs.
+        4) Saves the changed MIDI  in a folder called changed_midis.
+        5) Calculates the probabilities of the sound belonging in each of the quarters [Q1,Q2,Q3,Q4] and save in mood_attributes.
+        6) Plot them onto Russel Diagram and save in circle_images.  
+    Here, higher values of semitones means happier while lower values translates to sadder. 
 
+
+    Parameters:
+    - midi_filepath_input: Path to the MIDI file.
+    - semitones: How to manipulate emotion.
+    """
+     
     try:
         wav_before_change = midi_to_wav(midi_filepath_input,'soundfonts/Mario_World_HDv1.1.sf2')
-        print(wav_before_change)
         
          
      
@@ -38,7 +51,6 @@ def upload_pipeline(midi_filepath_input,semitones=15): # the input here is the s
         
         
         probabilities_before_change = get_probabilities(wav_before_change) ## probabilities after changing emotion.
-        print(probabilities_before_change)
         write_to_txt(wav_before_change,probabilities_before_change,output=False)
         
 
@@ -59,5 +71,5 @@ def upload_pipeline(midi_filepath_input,semitones=15): # the input here is the s
     
 ## example usage: 
 
-#upload_pipeline('AccoMontage2/MIDI demos/inputs/076/melody.mid')
+upload_pipeline('AccoMontage2/MIDI demos/inputs/105/melody.mid')
 

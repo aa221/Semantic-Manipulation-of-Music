@@ -30,7 +30,6 @@ def midi_to_wav(midi_file, sound_font):
     base_name = os.path.basename(midi_file)
     name_without_extension = os.path.splitext(base_name)[0]
     wav_file = 'output_wavs'+'/'+cleaned_path+'_'+name_without_extension+'.wav'
-    print(wav_file)
     try:
         # Construct the FluidSynth command
         command = [
