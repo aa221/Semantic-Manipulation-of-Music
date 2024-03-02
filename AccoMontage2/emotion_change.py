@@ -1,6 +1,6 @@
 import mido
 import os
-from music21 import converter, interval, stream
+from music21 import converter, interval, pitch, key
 
 # def transpose(file_path, semitones):
 #     try:
@@ -32,24 +32,26 @@ from music21 import converter, interval, stream
     
 
 
-def transpose(file_path, semitones):
+def transpose(file_path, target_key_name, output_dir='changed_midis'):
     try:
-        # Load the MIDI file using Music21
+        # Load the MIDI file
         score = converter.parse(file_path)
         
-        # Create the interval for transposition
-        transposition_interval = interval.Interval(semitones)
+        # Analyze the key of the original score
+        original_key = score.analyze('key')
+        print("Original key:", original_key.name)
+        
+        # Determine the interval needed to transpose the score to the target key
+        transposition_interval = interval.Interval(original_key.tonic, pitch.Pitch(target_key_name))
         
         # Transpose the score
         transposed_score = score.transpose(transposition_interval)
         
-        # Prepare the output directory and file name
-        output_dir = 'changed_midis'
+        # Prepare the output directory
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
             
-        # Extracting the directory number to create the output file name
-        # Adjust the logic if the file_path format differs
+        # Create the output file name based on the input file path
         dir_number = file_path.split('/')[-2]
         output_file_name = f"{dir_number}_transposed.mid"
         new_file_path = os.path.join(output_dir, output_file_name)
@@ -57,6 +59,11 @@ def transpose(file_path, semitones):
         # Save the transposed score as a MIDI file
         transposed_score.write('midi', fp=new_file_path)
         print("Transposed MIDI saved at:", new_file_path)
+        
+        # Optionally, analyze the key of the transposed score and print it (can be removed if not needed)
+        transposed_score = converter.parse(new_file_path)
+        transposed_key = transposed_score.analyze('key')
+        print("Transposed key:", transposed_key.name)
         
         return new_file_path
 

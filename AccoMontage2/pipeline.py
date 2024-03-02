@@ -17,21 +17,17 @@ There are three folders that save outputs
 
 
 
-def upload_pipeline(midi_filepath_input,semitones=-20): # the input here is the single stem midi , ## semitone value is a hyper-parameter for whether you want happy or sad.
-    ## higher value for semitones mean we are making the song happier, 
-    ## negative values mean we are making the song sadder. 
-    ## select style (soundfont)
-    ## first step is to  convert this into wav format:
+def upload_pipeline(midi_filepath_input,key):## 
     """
-    Takes in the filepath to a midi, and some semitone value. 
+    Takes in the filepath to a midi, and some key value. 
     Pipeline is as follows: 
-        1) Converts the inputted Midi into a given emotion based on the semitones value. 
+        1) Converts the inputted Midi into a given emotion based on the some key value. 
         2) Adds instrumentation to it. 
         3) Converts the MIDI prior to transformations and after into .wavs and saves it into output_wavs.
         4) Saves the changed MIDI  in a folder called changed_midis.
         5) Calculates the probabilities of the sound belonging in each of the quarters [Q1,Q2,Q3,Q4] and save in mood_attributes.
         6) Plot them onto Russel Diagram and save in circle_images.  
-    Here, higher values of semitones means happier while lower values translates to sadder. 
+    Here, major keys are normally happier, and sad keys are normally sadder
 
 
     Parameters:
@@ -44,7 +40,7 @@ def upload_pipeline(midi_filepath_input,semitones=-20): # the input here is the 
         
          
      
-        new_midi = transpose(midi_filepath_input,semitones)
+        new_midi = transpose(midi_filepath_input,key)
         generated_path = create_instrumentation(new_midi)
         wav_path = midi_to_wav(generated_path,'soundfonts/Mario_World_HDv1.1.sf2')
         
@@ -71,5 +67,5 @@ def upload_pipeline(midi_filepath_input,semitones=-20): # the input here is the 
     
 ## example usage: 
 
-upload_pipeline('AccoMontage2/MIDI demos/inputs/105/melody.mid')
+upload_pipeline('AccoMontage2/MIDI demos/inputs/076/melody.mid','D')
 

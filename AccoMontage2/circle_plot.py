@@ -7,10 +7,20 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def plot_weighted_point_in_circle(p1, p2, p3, p4, path):
-    directory = os.path.dirname(path)
+    # Handle empty or invalid path
+    if not path or os.path.basename(path) == '':
+        directory = 'circle_images'
+        filename = "unknown_pattern.png"
+        path = os.path.join(directory, filename)
+    else:
+        directory = os.path.dirname(path)
+    
+    # Ensure the directory exists
     if not os.path.exists(directory):
         os.makedirs(directory, exist_ok=True)
+    
     # Circle parameters
     radius = 1
     theta = np.linspace(0, 2*np.pi, 100)
@@ -28,7 +38,7 @@ def plot_weighted_point_in_circle(p1, p2, p3, p4, path):
     fig, ax = plt.subplots(subplot_kw={'aspect': 'equal'})
     
     # Plot circle
-    ax.plot(radius * np.cos(theta), radius * np.sin(theta) , 'b')  # Circle outline
+    ax.plot(radius * np.cos(theta), radius * np.sin(theta), 'b')  # Circle outline
     
     # Plot Cartesian coordinates
     ax.axhline(0, color='black', lw=1)  # Horizontal line
@@ -46,18 +56,15 @@ def plot_weighted_point_in_circle(p1, p2, p3, p4, path):
         ax.set_title('The Russel Diagram Before Mood Transformation')
     else: 
         ax.set_title('The Russel Diagram After Mood Transformation')
-    plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5)
+    plt.grid(color='gray', linestyle='--', linewidth=0.5)
 
     # Add labels for the emotions
     scale_factor = 0.88  # Adjust this as needed to scale the points inside the circle
     emotions = {
         'HAPPY': (0.9 * scale_factor, 0.1 * scale_factor),
-       
         'AROUSED': (0.3 * scale_factor, 0.9 * scale_factor),
-
         'SAD': (-0.9 * scale_factor, -0.3 * scale_factor),
         'TIRED': (-0.1 * scale_factor, -0.9 * scale_factor),
-      
     }
 
     for emotion, (ex, ey) in emotions.items():
@@ -65,9 +72,9 @@ def plot_weighted_point_in_circle(p1, p2, p3, p4, path):
 
     # Save the plot to the specified path
     plt.savefig(path)
-    print(path,'path_1')
+    print(f"Plot saved at: {path}")
     
-    # Close the plot window
+    # Close the plot window to free up memory
     plt.close()
 
 # Example usage
