@@ -15,7 +15,7 @@ This is the repository pertaining to the work presented in: Emotion Manipulation
 We introduce a novel way to manipulate the emotional content of a song using AI tools. Our goal is to achieve the desired emotion while leaving the original melody as intact as possible. For this, we create an interactive pipeline capable of shifting an input song into a diametrically opposed emotion and visualizing this result through Russel’s Circumplex model. Our approach is a test bed for the semantic music manipulation (SMM), a new field with exciting possible future applications. We design a deep learning model able to assess the accuracy of our modifications to key, SoundFont instrumentation, and other musical features. The accuracy of our model is in line with the current State of the Art techniques on the 4Q dataset. With further refinement, this research may contribute to on-demand custom music generation, the automated remixing of existing work, and music playlists arranged by emotional progression.
 
 <div align="center">
-    <img src="https://github.com/aa221/Semantic-Manipulation-of-Music/assets/57921290/82528c34-c718-4154-beb7-681c8429acf8" width="600">
+    <img src="https://github.com/aa221/Semantic-Manipulation-of-Music/assets/57921290/a4096c8c-77f4-4d29-931e-692fa82c0b00" width="600">
   <br>
     <p>Figure 1: Pipeline Overview</p>
 </div>
