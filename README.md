@@ -48,6 +48,7 @@ There should not be too much setup overall, however we outline the steps needed 
 2) Place the MIDI of the song you want to change in "AccoMontage2/MIDI demos". You'll see a list of demos there if you'd like to select one of those to start with. Note, files with "chord gen" in their names represent songs that have undergone transformations. Songs with "melody" represent ones that have not undergone transformations.
 3) Run pipeline.py ensuring the function is taking in the correct input song path, and key transformation.
 4) Find the output wav file, russel diagram and mood attributes in: output_wavs, circle_images, and mood_attributes respectively.
+5) ** Optional ** You can use the output wav as the input in the next run through the pipeline in order to convert your song towards a desired emotion (ex more sad).
 
 ## Examples
 Here we'll outline an example of what the results might look like. 
