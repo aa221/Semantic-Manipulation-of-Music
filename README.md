@@ -5,6 +5,7 @@
 - [Usage](#usage)
 - [Examples](#examples)
 - [Conclusions](#conclusions)
+- [Colab](#Colab)
 
 
 
@@ -76,6 +77,7 @@ In this example we are shifting a happy song, into a sad one. We did this using 
 ## Conclusions
 We have successfully created an end to end pipeline, capable of manipulating the emotional content of music from one emotion to another. In the case of our paper we focused on manipulating music from happy to sad and vice versa. We have also created a distinct and informative way to visualize our song transformations, leveraging Russel’s Circumplex model. Lastly, we have created a Deep Learning Model capable of predicting which Quadrant a given song belongs to, in order to leverage the visualization mentioned above. Our next step in improving our pipeline would be exploring the impact of Accomontage2 on the manipulation of music in isolation. Our analysis above concluded that both keys and Soundfonts have an impact on the shift in emotional content of a given piece of music. Accomontage2 in this case served in an interesting as we suspect it to have transformed a given song further along its desired target emotion based on the transformations applied to both the keys and SoundFont, however we will rigorously test this in order to confirm. Secondly, because our goal was to provide an initial pipeline capable of manipulating music’s emotional content, the applied transformations are not entirely sophisticated. As a result, one way of improving the current state of the pipeline, is to further increase both the complexity and number of transformations applied to the input audio overall. Features such as timbre, tempo and tone are all areas of focus that can be leveraged to further transform a given audio. Lastly, given the pipeline’s performance indicated by this paper, it may be interesting seeing how one can integrate this software as part of a larger system’s software. Artists interested in manipulating the emotional contents of their music, for example, may desire a larger system capable of generating music and manipulated said generated audio into a given emotion. Our pipeline, in this case, would serve as the platform to enable the latter. Music streaming, distribution and social media platforms may all hold some benefit in leveraging our pipeline as a building block for a larger purpose
 
-
+## Colab
+Heres a link to our google Colab where we trained the emotional classifier: https://colab.research.google.com/drive/1DPmCrhkgmi_KMil5y_ZJ7pg7ImDrbqUQ?usp=sharing
 
 
